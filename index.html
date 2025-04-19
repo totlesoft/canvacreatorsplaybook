@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="images/favicon-32x32.png" type="image/png" sizes="32x32">
   <title>The Ultimate Canva Creators Playbook</title>
-  <style>
+
+ <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -19,6 +20,7 @@
       color: #fff;
       padding: 50px 20px;
       text-align: center;
+      animation: fadeInDown 1s ease-in-out;
     }
 
     h1 {
@@ -39,6 +41,7 @@
       border-radius: 10px;
       font-size: 1.3rem;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      animation: fadeInUp 0.8s ease-in-out;
     }
 
     .cta-button {
@@ -51,6 +54,7 @@
       text-decoration: none;
       margin: 20px 0;
       transition: background 0.3s ease;
+      animation: bounceIn 1s ease-in-out;
     }
 
     .cta-button:hover {
@@ -63,6 +67,7 @@
       border-radius: 10px;
       margin: 20px auto;
       display: block;
+      animation: zoomIn 1s ease-in-out;
     }
 
     .section-title {
@@ -75,7 +80,6 @@
       padding-left: 1.5rem;
     }
 
-    
     @media(max-width: 768px) {
       h1 {
         font-size: 2rem;
@@ -85,9 +89,14 @@
       }
     }
   </style>
+  
 </head>
 <body>
 
+<!-- Progress Bar -->
+<div id="progress-bar"></div>
+
+<!-- Your Existing Content -->
 <header>
   <h1>The Ultimate Canva Creators Playbook</h1>
   <p>Your complete step-by-step guide to becoming a successful Canva Creator in 2025 and beyond</p>
@@ -423,5 +432,47 @@ We want to clarify that JVZoo serves as the retailer for the products featured o
   </div>
 </footer>
 
+  
+<!-- Back to top button -->
+  <button id="backToTop" onclick="scrollToTop()">↑ Top</button>
+
+<!-- Scripts -->
+<script>
+  // Scroll Progress Bar
+  window.onscroll = function() {
+    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progress-bar").style.width = scrolled + "%";
+
+    // Toggle Back to Top button
+    const backToTop = document.getElementById("backToTop");
+    backToTop.style.display = (winScroll > 300) ? "block" : "none";
+  };
+
+  // Scroll to Top function
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,13 +6,111 @@
   <link rel="icon" href="images/favicon-32x32.png" type="image/png" sizes="32x32">
   <title>Affiliate JV Page</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-      margin: 0;
-      padding: 0;
+    /* Base Styles */
+    :root {
+      --primary: #059e99;
+      --secondary: #03716e;
+      --accent: #e27c07;
+      --success: #38b000;
+      --warning: #ff9e00;
+      --danger: #ef233c;
+      --dark: #222;
+      --light: #f7f7f7;
     }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--light);
+      padding-top: 50px; /* Space for sticky bar */
+    }
+
+    /* Sticky Promo Bar */
+    .promo-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .promo-message {
+      margin: 0 15px;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .price-comparison {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 15px;
+    }
+    
+    .current-price {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+      margin-right: 10px;
+    }
+    
+    .original-price {
+      text-decoration: line-through;
+      opacity: 0.8;
+      font-size: 1rem;
+    }
+    
+    .countdown {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 15px;
+      background: rgba(0,0,0,0.2);
+      padding: 5px 15px;
+      border-radius: 50px;
+    }
+    
+    .countdown span {
+      margin: 0 5px;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    
+    .countdown-label {
+      margin-right: 10px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      margin-left: 10px;
+    }
+    
+    .badge-warning {
+      background: var(--warning);
+      color: #000;
+    }
+    
+    .badge-success {
+      background: var(--success);
+      color: white;
+    }
+
+    /* old code */
     header {
       background-color: #03716e;
       color: white;
@@ -90,22 +188,138 @@
       display: block;
     }
 
+    /* Price Box Styles for Main Content */
+    .price-box {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      margin: 30px 0;
+    }
+
+    .price-box h2 {
+        color: #e27c07;
+    }
+    
+    .price-amount {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 10px 0;
+    }
+    
+    .price-label {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+    
+    .status-message {
+      margin-top: 20px;
+      font-weight: 600;
+      min-height: 24px;
+      font-size: 18px;
+    }
+    
+    .timer-container {
+      margin: 30px 0;
+    }
+    
+    .timer-box {
+      background: rgba(3, 113, 110, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .timer-title {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: var(--secondary);
+    }
+    
+    .timer {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: monospace;
+    }
+    
+    @media(max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .promo-bar {
+        flex-direction: column;
+        padding: 8px 0;
+      }
+      
+      .promo-message, .price-comparison, .countdown {
+        margin: 5px 0;
+      }
+      
+      .price-amount {
+        font-size: 2.5rem;
+      }
+
+      .main-h {
+        margin-top: 80px;
+      }
+    }
     
   </style>
 </head>
 <body>
 
-<header>
+<header class="main-h">
   <h1>Welcome to the Ultimate Canva Creators Playbook Affiliate Program</h1>
   <p style="font-size: 1.4rem;">Earn big by promoting a high-demand, action-packed guide to Canva success!</p>
 </header>
 
 <div class="container">
+
+  <div class="promo-bar" id="promoBar">
+    <div class="promo-message" id="promoMessage">
+        <span id="dynamicMessage">Launch Special Starts In:</span>
+        <span class="badge" id="statusBadge"></span>
+    </div>
+    <div class="price-comparison">
+        <span class="current-price">$<span id="dynamicPrice">25</span></span>
+        <span class="original-price">$45</span>
+    </div>
+    <div class="countdown">
+        <span class="countdown-label" id="countdownLabel">Time Remaining:</span>
+        <span id="countdownTimer">00:00:00</span>
+    </div>
+</div>
+
+
   <section class="affiliate-details">
     <h2>Affiliate Overview</h2>
     <p style="font-size: 1.25rem;">
         As an affiliate, you’ll be promoting <span style="font-weight: bold; font-style: italic; color: #03716e;">The Ultimate Canva Creators Playbook</span>, a comprehensive guide that helps beginners and intermediate designers unlock their potential and start earning with Canva.
       </p>
+
+      <!-- Main Content -->
+   <div class="container">
+    <div class="price-box">
+        <h2>Ultimate Canva Creators Guide</h2>
+        <p class="price-label">Today's Price:</p>
+        <div class="price-amount">$<span id="mainPrice">25</span></div>
+        <a href="https://www.jvzoo.com/affiliate/affiliateinfonew/index/417799" class="cta-button" id="purchaseButton">Get Your Affiliate Link</a>
+        <div class="status-message" id="statusMessage"></div>
+    </div>
+
+      <div class="timer-container">
+        <div class="timer-box">
+            <div class="timer-title" id="timerTitle">Flash Sale Countdown</div>
+            <div class="timer" id="mainTimer">00:00:00</div>
+        </div>
+    </div>
     
     <br />
     <h3>Why Promote This Guide?</h3>
@@ -235,7 +449,7 @@
         <p style="font-size: 14px; opacity: 0.8; margin-top: 20px;">
             <a href="https://docs.google.com/document/d/1AyhHRbKN48HgxU4q9kDizJXcXeU0CsqeEblrF7ar64s/edit?usp=sharing" style="color: #fff; text-decoration: underline;">Terms and Condition</a> | 
             <a href="https://docs.google.com/document/d/17eyY10wmZIUGjdw0Xlli-nkNXN_zCgg6_5_uW-2_D0k/edit?usp=sharing" style="color: #fff; text-decoration: underline;">Privacy Policy</a> |
-            <a href="https://docs.google.com/document/d/1IUzo6t1_wtP0Ux7wH5wWhjD_oJjySrlAuIpf6DrHO1w/edit?tab=t.0" style="color: #fff; text-decoration: underline;">
+            <a href="mailto:info@totlesoft.com?subject=Canva%20Creator%20Support&body=Hi%20Totlesoft%2C%0AI%20have%20a%20question%20about%20the%20Canva%20Playbook..." style="color: #fff; text-decoration: underline;">
               Contact Us
             </a>
         </p>
@@ -260,7 +474,113 @@
     </div>
   </footer>
   
-  
+
+  <script>
+    // Launch Date Configuration
+    const launchDate = new Date('April 22, 2025 09:00:00 EST');
+    const promoEndDate = new Date('April 22, 2025 23:59:59 EST');
+    const promoPrice = 15;
+    const regularPrice = 25;
+    const originalPrice = 45;
+    
+    // DOM Elements
+    const promoBar = document.getElementById('promoBar');
+    const promoMessage = document.getElementById('promoMessage');
+    const dynamicMessage = document.getElementById('dynamicMessage');
+    const statusBadge = document.getElementById('statusBadge');
+    const dynamicPrice = document.getElementById('dynamicPrice');
+    const mainPrice = document.getElementById('mainPrice');
+    const countdownLabel = document.getElementById('countdownLabel');
+    const countdownTimer = document.getElementById('countdownTimer');
+    const timerTitle = document.getElementById('timerTitle');
+    const mainTimer = document.getElementById('mainTimer');
+    const statusMessage = document.getElementById('statusMessage');
+    const purchaseButton = document.getElementById('purchaseButton');
+    
+    // Update prices and UI based on current time
+    function updatePromoStatus() {
+        const now = new Date();
+        const timezoneOffset = now.getTimezoneOffset() * 60000;
+        const estOffset = 5 * 3600000; // EST is UTC-5
+        const currentEST = new Date(now.getTime() - timezoneOffset - estOffset);
+        
+        // Check if we're before launch
+        if (currentEST < launchDate) {
+            // Pre-launch countdown
+            dynamicMessage.textContent = 'Launch Special Starts In:';
+            statusBadge.textContent = 'Coming Soon';
+            statusBadge.className = 'badge badge-warning';
+            dynamicPrice.textContent = regularPrice;
+            mainPrice.textContent = regularPrice;
+            countdownLabel.textContent = 'Starts In:';
+            timerTitle.textContent = 'Launch Countdown';
+            statusMessage.textContent = 'Special $15 price activates at 9:00 AM EST on launch day!';
+            
+            updateCountdown(launchDate, currentEST, countdownTimer);
+            updateCountdown(launchDate, currentEST, mainTimer);
+        } 
+        // Check if we're during promo period
+        else if (currentEST >= launchDate && currentEST <= promoEndDate) {
+            // Active promo
+            dynamicMessage.textContent = 'FLASH SALE!';
+            statusBadge.textContent = 'Active';
+            statusBadge.className = 'badge badge-success';
+            dynamicPrice.textContent = promoPrice;
+            mainPrice.textContent = promoPrice;
+            countdownLabel.textContent = 'Time Remaining:';
+            timerTitle.textContent = 'Flash Sale Ends In:';
+            statusMessage.textContent = 'HURRY! This $15 special price ends tonight at 11:59 PM EST!';
+            
+            updateCountdown(promoEndDate, currentEST, countdownTimer);
+            updateCountdown(promoEndDate, currentEST, mainTimer);
+        } 
+        // After promo ends
+        else {
+            // Promo expired
+            dynamicMessage.textContent = 'Promo Period Expired';
+            statusBadge.textContent = 'Closed';
+            statusBadge.className = 'badge';
+            statusBadge.style.backgroundColor = '#ccc';
+            dynamicPrice.textContent = regularPrice;
+            mainPrice.textContent = regularPrice;
+            countdownLabel.textContent = 'Sale Ended:';
+            countdownTimer.textContent = '11:59 PM EST';
+            timerTitle.textContent = 'Flash Sale Ended';
+            mainTimer.textContent = '00:00:00';
+            statusMessage.textContent = 'The special promo period has ended. Check back for future deals!';
+        }
+    }
+    
+    // Update countdown timer display
+    function updateCountdown(targetDate, currentDate, element) {
+        const diff = targetDate - currentDate;
+        
+        if (diff <= 0) {
+            element.textContent = '00:00:00';
+            return;
+        }
+        
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        element.textContent = 
+            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+    
+    // Initialize and update every second
+    updatePromoStatus();
+    setInterval(updatePromoStatus, 1000);
+    
+    // JVZoo integration would go here
+    purchaseButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Replace with your actual JVZoo link
+        const price = document.getElementById('mainPrice').textContent;
+        alert(`Redirecting to JVZoo purchase page at $${price} price point`);
+        // window.location.href = "YOUR_JVZOO_LINK_HERE";
+    });
+</script>  
   
 
 </body>

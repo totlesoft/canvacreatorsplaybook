@@ -5,22 +5,118 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="images/favicon-32x32.png" type="image/png" sizes="32x32">
   <title>The Ultimate Canva Creators Playbook</title>
-
- <style>
+  <style>
+    /* Base Styles */
+    :root {
+      --primary: #059e99;
+      --secondary: #03716e;
+      --accent: #e27c07;
+      --success: #38b000;
+      --warning: #ff9e00;
+      --danger: #ef233c;
+      --dark: #222;
+      --light: #f7f7f7;
+    }
+    
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       line-height: 1.6;
-      color: #222;
-      background: #f7f7f7;
+      color: var(--dark);
+      background: var(--light);
+      padding-top: 50px; /* Space for sticky bar */
     }
 
+    /* Sticky Promo Bar */
+    .promo-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .promo-message {
+      margin: 0 15px;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .price-comparison {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 15px;
+    }
+    
+    .current-price {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+      margin-right: 10px;
+    }
+    
+    .original-price {
+      text-decoration: line-through;
+      opacity: 0.8;
+      font-size: 1rem;
+    }
+    
+    .countdown {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 15px;
+      background: rgba(0,0,0,0.2);
+      padding: 5px 15px;
+      border-radius: 50px;
+    }
+    
+    .countdown span {
+      margin: 0 5px;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    
+    .countdown-label {
+      margin-right: 10px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      margin-left: 10px;
+    }
+    
+    .badge-warning {
+      background: var(--warning);
+      color: #000;
+    }
+    
+    .badge-success {
+      background: var(--success);
+      color: white;
+    }
+
+    /* Your Existing Styles */
     header {
-      background: #059e99;
+      background: var(--primary);
       color: #fff;
       padding: 50px 20px;
       text-align: center;
-      animation: fadeInDown 1s ease-in-out;
     }
 
     h1 {
@@ -41,12 +137,11 @@
       border-radius: 10px;
       font-size: 1.3rem;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      animation: fadeInUp 0.8s ease-in-out;
     }
 
     .cta-button {
       display: inline-block;
-      background: #03716e;
+      background: var(--secondary);
       color: #fff;
       padding: 15px 25px;
       border-radius: 8px;
@@ -54,11 +149,10 @@
       text-decoration: none;
       margin: 20px 0;
       transition: background 0.3s ease;
-      animation: bounceIn 1s ease-in-out;
     }
 
     .cta-button:hover {
-      background: #e27c07;
+      background: var(--accent);
     }
 
     .book-cover {
@@ -67,19 +161,75 @@
       border-radius: 10px;
       margin: 20px auto;
       display: block;
-      animation: zoomIn 1s ease-in-out;
     }
 
     .section-title {
       font-size: 1.8rem;
       margin-bottom: 10px;
-      color: #03716e;
+      color: var(--secondary);
     }
 
     ul {
       padding-left: 1.5rem;
     }
+    
+    /* Price Box Styles for Main Content */
+    .price-box {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      margin: 30px 0;
+    }
 
+    .price-box h2 {
+        color: #e27c07;
+    }
+    
+    .price-amount {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 10px 0;
+    }
+    
+    .price-label {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+    
+    .status-message {
+      margin-top: 20px;
+      font-weight: 600;
+      min-height: 24px;
+      font-size: 18px;
+    }
+    
+    .timer-container {
+      margin: 30px 0;
+    }
+    
+    .timer-box {
+      background: rgba(3, 113, 110, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .timer-title {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: var(--secondary);
+    }
+    
+    .timer {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: monospace;
+    }
+    
     @media(max-width: 768px) {
       h1 {
         font-size: 2rem;
@@ -87,22 +237,24 @@
       .section-title {
         font-size: 1.5rem;
       }
+      
+      .promo-bar {
+        flex-direction: column;
+        padding: 8px 0;
+      }
+      
+      .promo-message, .price-comparison, .countdown {
+        margin: 5px 0;
+      }
+      
+      .price-amount {
+        font-size: 2.5rem;
+      }
     }
-  </style>
-  
+</style>
 </head>
 <body>
 
-<!-- Progress Bar -->
-<div id="progress-bar">
-
-
-
-
-  
-</div>
-
-<!-- Your Existing Content -->
 <header>
   <h1>The Ultimate Canva Creators Playbook</h1>
   <p>Your complete step-by-step guide to becoming a successful Canva Creator in 2025 and beyond</p>
@@ -111,10 +263,42 @@
 
 <div class="container">
 
+    <div class="promo-bar" id="promoBar">
+        <div class="promo-message" id="promoMessage">
+            <span id="dynamicMessage">Launch Special Starts In:</span>
+            <span class="badge" id="statusBadge"></span>
+        </div>
+        <div class="price-comparison">
+            <span class="current-price">$<span id="dynamicPrice">25</span></span>
+            <span class="original-price">$45</span>
+        </div>
+        <div class="countdown">
+            <span class="countdown-label" id="countdownLabel">Time Remaining:</span>
+            <span id="countdownTimer">00:00:00</span>
+        </div>
+    </div>
+
   <section>
     <h2 class="section-title">Why Canva Is the Ultimate Passive Income Platform</h2>
     <p>In 2024, Canva has become a powerhouse for creative entrepreneurs. With its creator marketplace growing exponentially, now is the perfect time to get in — but only if you do it right. This playbook shows you exactly how.</p>
   </section>
+
+   <!-- Main Content -->
+   <div class="container">
+    <div class="price-box">
+        <h2>Ultimate Canva Creators Guide</h2>
+        <p class="price-label">Today's Price:</p>
+        <div class="price-amount">$<span id="mainPrice">25</span></div>
+        <a href="https://www.jvzoo.com/b/0/417799/3" class="cta-button" id="purchaseButton">Get Instant Access</a>
+        <div class="status-message" id="statusMessage"></div>
+    </div>
+    
+    <div class="timer-container">
+        <div class="timer-box">
+            <div class="timer-title" id="timerTitle">Flash Sale Countdown</div>
+            <div class="timer" id="mainTimer">00:00:00</div>
+        </div>
+    </div>
 
   <section style="background-color: #f0fdfc; padding: 50px 20px; text-align: center;">
     <h2 class="section-title" style="color: #03716e;">Is This Guide Right for You?</h2>
@@ -438,26 +622,113 @@ We want to clarify that JVZoo serves as the retailer for the products featured o
   </div>
 </footer>
 
-  
-<!-- Back to top button -->
-  <button id="backToTop" onclick="scrollToTop()">↑ Top</button>
 
-<!-- Scripts -->
+
 <script>
-  // Scroll Progress Bar
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-    document.getElementById('progress-bar').style.width = scrollPercent + '%';
-
-    // Back to Top button visibility
-    document.getElementById('backToTop').style.display = scrollTop > 300 ? 'block' : 'none';
-  });
-
-  function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+    // Launch Date Configuration
+    const launchDate = new Date('April 22, 2025 09:00:00 EST');
+    const promoEndDate = new Date('April 22, 2025 23:59:59 EST');
+    const promoPrice = 15;
+    const regularPrice = 25;
+    const originalPrice = 45;
+    
+    // DOM Elements
+    const promoBar = document.getElementById('promoBar');
+    const promoMessage = document.getElementById('promoMessage');
+    const dynamicMessage = document.getElementById('dynamicMessage');
+    const statusBadge = document.getElementById('statusBadge');
+    const dynamicPrice = document.getElementById('dynamicPrice');
+    const mainPrice = document.getElementById('mainPrice');
+    const countdownLabel = document.getElementById('countdownLabel');
+    const countdownTimer = document.getElementById('countdownTimer');
+    const timerTitle = document.getElementById('timerTitle');
+    const mainTimer = document.getElementById('mainTimer');
+    const statusMessage = document.getElementById('statusMessage');
+    const purchaseButton = document.getElementById('purchaseButton');
+    
+    // Update prices and UI based on current time
+    function updatePromoStatus() {
+        const now = new Date();
+        const timezoneOffset = now.getTimezoneOffset() * 60000;
+        const estOffset = 5 * 3600000; // EST is UTC-5
+        const currentEST = new Date(now.getTime() - timezoneOffset - estOffset);
+        
+        // Check if we're before launch
+        if (currentEST < launchDate) {
+            // Pre-launch countdown
+            dynamicMessage.textContent = 'Launch Special Starts In:';
+            statusBadge.textContent = 'Coming Soon';
+            statusBadge.className = 'badge badge-warning';
+            dynamicPrice.textContent = regularPrice;
+            mainPrice.textContent = regularPrice;
+            countdownLabel.textContent = 'Starts In:';
+            timerTitle.textContent = 'Launch Countdown';
+            statusMessage.textContent = 'Special $15 price activates at 9:00 AM EST on launch day!';
+            
+            updateCountdown(launchDate, currentEST, countdownTimer);
+            updateCountdown(launchDate, currentEST, mainTimer);
+        } 
+        // Check if we're during promo period
+        else if (currentEST >= launchDate && currentEST <= promoEndDate) {
+            // Active promo
+            dynamicMessage.textContent = 'FLASH SALE!';
+            statusBadge.textContent = 'Active';
+            statusBadge.className = 'badge badge-success';
+            dynamicPrice.textContent = promoPrice;
+            mainPrice.textContent = promoPrice;
+            countdownLabel.textContent = 'Time Remaining:';
+            timerTitle.textContent = 'Flash Sale Ends In:';
+            statusMessage.textContent = 'HURRY! This $15 special price ends tonight at 11:59 PM EST!';
+            
+            updateCountdown(promoEndDate, currentEST, countdownTimer);
+            updateCountdown(promoEndDate, currentEST, mainTimer);
+        } 
+        // After promo ends
+        else {
+            // Promo expired
+            dynamicMessage.textContent = 'Promo Period Expired';
+            statusBadge.textContent = 'Closed';
+            statusBadge.className = 'badge';
+            statusBadge.style.backgroundColor = '#ccc';
+            dynamicPrice.textContent = regularPrice;
+            mainPrice.textContent = regularPrice;
+            countdownLabel.textContent = 'Sale Ended:';
+            countdownTimer.textContent = '11:59 PM EST';
+            timerTitle.textContent = 'Flash Sale Ended';
+            mainTimer.textContent = '00:00:00';
+            statusMessage.textContent = 'The special promo period has ended. Check back for future deals!';
+        }
+    }
+    
+    // Update countdown timer display
+    function updateCountdown(targetDate, currentDate, element) {
+        const diff = targetDate - currentDate;
+        
+        if (diff <= 0) {
+            element.textContent = '00:00:00';
+            return;
+        }
+        
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        element.textContent = 
+            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+    
+    // Initialize and update every second
+    updatePromoStatus();
+    setInterval(updatePromoStatus, 1000);
+    
+    // JVZoo integration would go here
+    purchaseButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Replace with your actual JVZoo link
+        const price = document.getElementById('mainPrice').textContent;
+        alert(`Redirecting to JVZoo purchase page at $${price} price point`);
+        // window.location.href = "YOUR_JVZOO_LINK_HERE";
+    });
 </script>
 
 </body>

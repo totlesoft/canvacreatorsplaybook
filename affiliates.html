@@ -418,15 +418,15 @@
   </section>
 
   <section style="background-color: #03716e; color: white; text-align: center; padding: 3rem 1rem; border-radius: 12px; margin-top: 2rem;">
-    <h2 style="font-size: 2rem; margin-bottom: 1rem;">🚀 Let's Crush This Launch Together!</h2>
+    <h2 style="font-size: 2rem; margin-bottom: 1rem;">🚀 Let's Earn Together!</h2>
     <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 1.5rem;">
-      Mark your calendars — <strong>April 22nd, 2025 @ 9AM EST</strong> — and get ready to partner with us on the most practical and profitable content drop for creators!
+      Hurray! — <strong>The Game Changer Has Landed</strong> — It's time to partner with us on the most practical and profitable content drop for creators!
     </p>
     <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem;">
-      Whether you're a seasoned affiliate or just getting started, this launch is designed to convert. No hype, no fluff — just real value, proven strategies, and solid commissions.
+      Whether you're a seasoned affiliate or just getting started, this product is designed to convert. No hype, no fluff — just real value, proven strategies, and solid commissions.
     </p>
     <a href="https://www.jvzoo.com/affiliate/affiliateinfonew/index/417799" style="background-color: white; color: #03716e; padding: 0.8rem 1.5rem; font-size: 1.1rem; font-weight: bold; text-decoration: none; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-      🔥 Join the Launch & Promote Now
+      🔥 Get Your Affiliate Link Now!
     </a>
   </section>
 
@@ -480,7 +480,7 @@
     const launchDate = new Date('April 22, 2025 09:00:00 EST');
     const promoEndDate = new Date('April 22, 2025 23:59:59 EST');
     const promoPrice = 15;
-    const regularPrice = 25;
+    const regularPrice = 10;
     const originalPrice = 45;
     
     // DOM Elements
@@ -537,17 +537,17 @@
         // After promo ends
         else {
             // Promo expired
-            dynamicMessage.textContent = 'Promo Period Expired';
-            statusBadge.textContent = 'Closed';
-            statusBadge.className = 'badge';
-            statusBadge.style.backgroundColor = '#ccc';
+            dynamicMessage.textContent = 'New Flash Sale';
+            statusBadge.textContent = 'Activated';
+            statusBadge.className = 'badge badge-success';
+            
             dynamicPrice.textContent = regularPrice;
             mainPrice.textContent = regularPrice;
-            countdownLabel.textContent = 'Sale Ended:';
-            countdownTimer.textContent = '11:59 PM EST';
-            timerTitle.textContent = 'Flash Sale Ended';
-            mainTimer.textContent = '00:00:00';
-            statusMessage.textContent = 'The special promo period has ended. Check back for future deals!';
+            countdownLabel.textContent = 'Best Time:';
+            countdownTimer.textContent = 'To Promote';
+            timerTitle.textContent = 'Flash Sale Activated';
+            mainTimer.textContent = 'Ending Soon';
+            statusMessage.textContent = 'The special promo period could ended at anytime. Act Now!';
         }
     }
     

@@ -273,7 +273,7 @@
             <span class="badge" id="statusBadge"></span>
         </div>
         <div class="price-comparison">
-            <span class="current-price">$<span id="dynamicPrice">25</span></span>
+            <span class="current-price">$<span id="dynamicPrice">10</span></span>
             <span class="original-price">$45</span>
         </div>
         <div class="countdown">
@@ -292,7 +292,7 @@
     <div class="price-box">
         <h2>Ultimate Canva Creators Guide</h2>
         <p class="price-label">Today's Price:</p>
-        <div class="price-amount">$<span id="mainPrice">25</span></div>
+        <div class="price-amount">$<span id="mainPrice">10</span></div>
         <a href="https://www.jvzoo.com/b/0/417799/3" class="cta-button" id="purchaseButton">Get Instant Access</a>
         <div class="status-message" id="statusMessage"></div>
     </div>
@@ -347,7 +347,7 @@
     <div style="background-color: white; border-radius: 16px; padding: 40px 30px; width: 100%; margin: 0 auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
       <h2 style="color: #03716e; font-size: 24px;">Get the Guide</h2>
       <p style="font-size: 18px; margin: 10px 0;">One-time Payment — Instant Access</p>
-      <p style="font-size: 20px; color: #555;"><s>$45</s> <span style="font-size: 32px; color: #03716e; font-weight: bold;">$25</span></p>
+      <p style="font-size: 20px; color: #555;"><s>$45</s> <span style="font-size: 32px; color: #03716e; font-weight: bold;">$10</span></p>
       <a href="https://www.jvzoo.com/b/0/417799/3" style="display: inline-block; background-color: #03716e; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 20px;">Buy Now</a>
     </div>
   </section>
@@ -412,7 +412,7 @@
 
   <section style="background-color: #03716e; padding: 60px 20px; color: white; text-align: center;">
     <h2 style="font-size: 32px; margin-bottom: 10px;">Limited-Time Offer</h2>
-    <p style="font-size: 18px; margin-bottom: 20px;">Access <strong>The Ultimate Canva Creators Playbook</strong> for just <s>$45</s> <span style="font-size: 28px;">$25</span></p>
+    <p style="font-size: 18px; margin-bottom: 20px;">Access <strong>The Ultimate Canva Creators Playbook</strong> for just <s>$45</s> <span style="font-size: 28px;">$10</span></p>
     <a href="https://www.jvzoo.com/b/0/417799/3" style="background-color: white; color: #03716e; padding: 14px 32px; font-size: 16px; font-weight: bold; border-radius: 10px; text-decoration: none;">Get Instant Access</a>
   </section>
 
@@ -495,7 +495,7 @@
     <div style="border: 2px solid #03716e; border-radius: 20px; max-width: 500px; margin: 0 auto; padding: 40px;">
       <h2 style="color: #03716e; font-size: 28px; margin-bottom: 10px;">Your Canva Creator Journey Starts Here</h2>
       <p style="font-size: 16px; margin: 10px 0;">Includes full guide, checklists, and resource links</p>
-      <p style="font-size: 18px; margin-bottom: 20px;"><s>$45</s> <span style="font-size: 36px; color: #03716e;">$25</span></p>
+      <p style="font-size: 18px; margin-bottom: 20px;"><s>$45</s> <span style="font-size: 36px; color: #03716e;">$10</span></p>
       <ul style="list-style: none; padding: 0; text-align: left; margin: 0 auto 30px; max-width: 300px; color: #333;">
         <li>✔️ Instant Digital Download</li>
         <li>✔️ No Fluff, No Upsells</li>
@@ -577,7 +577,7 @@
   <section style="background-color: #03716e; color: white; padding: 50px 20px; text-align: center;">
     <h2 style="font-size: 28px;">Don’t Wait to Get Approved — Get Strategic</h2>
     <p style="font-size: 18px; margin: 10px 0 30px;">Start your Canva Creator journey today with the only guide built to help you succeed without the guesswork.</p>
-    <a href="https://www.jvzoo.com/b/0/417799/3" style="background-color: white; color: #03716e; padding: 14px 32px; font-size: 16px; font-weight: bold; border-radius: 10px; text-decoration: none;">Get the Playbook for $25</a>
+    <a href="https://www.jvzoo.com/b/0/417799/3" style="background-color: white; color: #03716e; padding: 14px 32px; font-size: 16px; font-weight: bold; border-radius: 10px; text-decoration: none;">Get the Playbook for $10</a>
   </section>
 
 
@@ -633,7 +633,7 @@ We want to clarify that JVZoo serves as the retailer for the products featured o
     const launchDate = new Date('April 22, 2025 09:00:00 EST');
     const promoEndDate = new Date('April 22, 2025 23:59:59 EST');
     const promoPrice = 15;
-    const regularPrice = 25;
+    const regularPrice = 10;
     const originalPrice = 45;
     
     // DOM Elements
@@ -690,17 +690,17 @@ We want to clarify that JVZoo serves as the retailer for the products featured o
         // After promo ends
         else {
             // Promo expired
-            dynamicMessage.textContent = 'Promo Period Expired';
-            statusBadge.textContent = 'Closed';
-            statusBadge.className = 'badge';
-            statusBadge.style.backgroundColor = '#ccc';
+            dynamicMessage.textContent = 'New Flash Sale';
+            statusBadge.textContent = 'Activated';
+            statusBadge.className = 'badge badge-success';
+            
             dynamicPrice.textContent = regularPrice;
             mainPrice.textContent = regularPrice;
-            countdownLabel.textContent = 'Sale Ended:';
-            countdownTimer.textContent = '11:59 PM EST';
-            timerTitle.textContent = 'Flash Sale Ended';
-            mainTimer.textContent = '00:00:00';
-            statusMessage.textContent = 'The special promo period has ended. Check back for future deals!';
+            countdownLabel.textContent = 'Buy Now:';
+            countdownTimer.textContent = 'Ending Soon';
+            timerTitle.textContent = 'Flash Sale Activated';
+            mainTimer.textContent = 'Ending Soon';
+            statusMessage.textContent = 'The special promo period could ended at anytime. Act Now!';
         }
     }
     
@@ -737,3 +737,21 @@ We want to clarify that JVZoo serves as the retailer for the products featured o
 
 </body>
 </html>
+
+
+<!----   
+else {
+            // Promo expired
+            dynamicMessage.textContent = 'Promo Period Expired';
+            statusBadge.textContent = 'Closed';
+            statusBadge.className = 'badge';
+            statusBadge.style.backgroundColor = '#ccc';
+            dynamicPrice.textContent = regularPrice;
+            mainPrice.textContent = regularPrice;
+            countdownLabel.textContent = 'Sale Ended:';
+            countdownTimer.textContent = '11:59 PM EST';
+            timerTitle.textContent = 'Flash Sale Ended';
+            mainTimer.textContent = '00:00:00';
+            statusMessage.textContent = 'The special promo period has ended. Check back for future deals!';
+        }
+-->
